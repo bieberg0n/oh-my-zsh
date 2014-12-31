@@ -11,15 +11,15 @@ function theme_precmd {
     PR_FILLBAR=""
     PR_PWDLEN=""
 
-    local promptsize=${#${(%):---(%n@%m:%l)---()--}}
+    local promptsize=${#${(%):---(%n@%m:%l)--()}}
     local rubyprompt=`rvm_prompt_info || rbenv_prompt_info`
     local rubypromptsize=${#${rubyprompt}}
     local pwdsize=${#${(%):-%~}}
 
-    if [[ "$promptsize + $rubypromptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+    if [[ "$promptsize + $rubypromptsize + $pwdsize - 4" -gt $TERMWIDTH ]]; then
       ((PR_PWDLEN=$TERMWIDTH - $promptsize))
     else
-      PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize)))..${PR_HBAR}.)}"
+      PR_FILLBAR="\${(l.(($TERMWIDTH - ($rubypromptsize + $pwdsize + $promptsize)))..${PR_HBAR}.)}"
     fi
 
 }
