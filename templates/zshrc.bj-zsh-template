@@ -63,6 +63,8 @@ alias mv='mv -iv'
 alias cp='cp -iv'
 alias e='jmacs'
 alias se='sudo jmacs'
+alias s='systemctl --user'
+alias j='journalctl --user'
 
 PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 %{[1;35m%}$PR_ULCORNER$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR$PR_BLUE(\
